@@ -1,0 +1,19 @@
+.left-login-side {
+  padding: 30px;
+  background-color: var(--primary-color);
+  width: 50%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.left-login-side .main-text {
+  color: #ffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.left-login-side .sub-text{
+    color: #ffff;
+  font-size: 16px;
+  font-weight: 400;   
+}

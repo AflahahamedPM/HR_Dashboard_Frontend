@@ -1,0 +1,80 @@
+#login-container {
+  /* min-height: 80vh; */
+  width: 100%;
+}
+
+.main-title {
+  font-size: 36px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.login-content {
+  width: 90%;
+  margin: auto;
+  box-shadow: rgba(18, 18, 18, 0.3);
+  display: flex;
+}
+
+.login-field-container {
+  width: 50%;
+}
+
+.login-field-container .login-content {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  height: 100%;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.text-input {
+  border-radius: 8px;
+  border: 1px solid #E5E5E5;
+  outline: none;
+  padding: 16px;
+  margin: 8px 0;
+  width: 100%;
+  padding-right: 40px; 
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px; 
+  transform: translateY(-50%); 
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.welcome-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.btn-container .login-btn{
+    padding: 8px 40px;
+    border-radius: 50px;
+    color: #FFFF;
+    outline: none;
+    border: none;
+}
+
+.redirect-link{
+    font-size: 14px;
+    font-weight: 400;
+}

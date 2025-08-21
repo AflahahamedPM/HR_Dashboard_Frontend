@@ -1,0 +1,40 @@
+.side-bar-root {
+  /* color: rgb(33, 43, 54); */
+  background-image: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 120vh;
+  flex: 1 0 auto;
+  position: fixed;
+  /* top: 100px; */
+  left: 20px;
+  z-index: 1300;
+  outline: 0;
+  background-color: #fff;
+  cursor: pointer;
+  width: 190px;
+  scrollbar-width: none;
+  border-right: 1px solid #E5E5E5;
+}
+
+.title-text{
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.drawer-content{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.menu-title{
+    color: #A4A4A4;
+    font-size: 14px;
+    font-weight: 500;
+}
