@@ -5,11 +5,20 @@ const filterFormFields = {
   position: "",
 };
 
+const candidateFormFields = {
+  fullName: "",
+  email: "",
+  phoneNo: "",
+  position: "",
+  experience: "",
+  resume: "",
+};
+
 const useServices = () => {
   const [filterForm, setFilterForm] = useState(filterFormFields);
   const [keyword, setKeyword] = useState("");
   const [addCandidateModalOpen, setAddCandidateModalOpen] = useState(false);
-  const closeCandidateModalRef = useRef(null);
+  const [candidateForm, setCandidateForm] = useState(candidateFormFields);
 
   const headers = [
     { key: "srNo", label: "Sr No", width: "80px", height: "50px" },
@@ -93,7 +102,8 @@ const useServices = () => {
     setKeyword,
     addCandidateModalOpen,
     setAddCandidateModalOpen,
-    closeCandidateModalRef,
+    candidateForm,
+    setCandidateForm,
   };
 };
 

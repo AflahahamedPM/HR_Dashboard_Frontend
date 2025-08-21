@@ -1,50 +1,38 @@
 import React from "react";
-import DataTable from "../../../../components/DataTable";
-import { useCandidateData } from "../../../../context/CandidateContext";
 import Toolbar from "../../../../components/Toolbar";
+import DataTable from "../../../../components/DataTable";
+import { useEmployeeData } from "../../../../context/EmployeeContext";
 import DialogModal from "../../../../components/DialogModal";
 import { closeIcon } from "../../../../../image";
-import CandidateInputFields from "./CandidateForm";
-import CandidateForm from "./CandidateForm";
+import EmplyeeForm from "./EmplyeeForm";
 
-const CandidateComponent = () => {
+const EmployeeComponent = () => {
   const {
     headers,
     data,
     actions,
-    statusOptions,
-    updateStatus,
     positionOptions,
     filterForm,
     setFilterForm,
     setKeyword,
-    setAddCandidateModalOpen,
-    addCandidateModalOpen,
-    closeCandidateModalRef,
-  } = useCandidateData();
+    editEmployeeModalOpen,
+    setEditEmployeeModalOpen,
+  } = useEmployeeData();
+
   return (
     <>
       <Toolbar
         positionOptions={positionOptions}
-        statusOptions={statusOptions}
         filter={filterForm}
         setFilter={setFilterForm}
         onSearch={(searchValue) => setKeyword(searchValue)}
-        isCandidatePage={true}
-        handleAddCandidate={() => setAddCandidateModalOpen(true)}
       />
-      <DataTable
-        columns={headers}
-        data={data}
-        actions={actions}
-        statusOptions={statusOptions}
-        updateStatus={updateStatus}
-      />
+      <DataTable columns={headers} data={data} actions={actions} />
 
-      {addCandidateModalOpen && (
+      {editEmployeeModalOpen && (
         <DialogModal
-          isOpen={addCandidateModalOpen}
-          reset={() => setAddCandidateModalOpen(false)}
+          isOpen={editEmployeeModalOpen}
+          reset={() => setEditEmployeeModalOpen(false)}
           width={"600px"}
           parent={
             <div
@@ -61,7 +49,7 @@ const CandidateComponent = () => {
             >
               <div>
                 <p style={{ marginLeft: "10px", color: "white" }}>
-                  Add Candidate
+                  Edit Employee Details
                 </p>
               </div>
               <img
@@ -69,16 +57,16 @@ const CandidateComponent = () => {
                 height={20}
                 width={20}
                 alt="closeIcon"
-                onClick={() => setAddCandidateModalOpen(false)}
+                onClick={() => setEditEmployeeModalOpen(false)}
               />
             </div>
           }
         >
-          <CandidateForm />
+          <EmplyeeForm />
         </DialogModal>
       )}
     </>
   );
 };
 
-export default CandidateComponent;
+export default EmployeeComponent;

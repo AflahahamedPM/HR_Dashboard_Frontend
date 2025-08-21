@@ -1,0 +1,78 @@
+.candidate-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-title {
+  text-align: center;
+  background-color: #6b21a8; /* purple-700 */
+  color: white;
+  padding: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.input-field {
+  border-radius: 8px !important;
+  border: 1px solid #ddd;
+  padding: 4px;
+  height: 44px;
+}
+
+.resume-upload {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px;
+  height: 36px;
+}
+
+/* Hide the ugly default input */
+.resume-input-hidden {
+  display: none;
+}
+
+/* Styled file upload button (looks like input) */
+.resume-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  width: 100%;
+  background-color: #fff;
+  font-size: 14px;
+  color: #444;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563; /* gray-600 */
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+

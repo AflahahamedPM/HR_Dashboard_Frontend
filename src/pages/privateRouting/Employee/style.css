@@ -1,0 +1,46 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.employee-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-field {
+  border-radius: 8px !important;
+  border: 1px solid #ddd;
+  padding: 4px;
+  height: 44px;
+}
+
+.datepicker_style {
+  border-radius: 8px !important;
+  border: 1px solid #e5e5e5 !important;
+  overflow: hidden !important;
+  font-size: 14px !important;
+  margin-top: "4px" !important;
+  background-color: white !important;
+  padding: 4px;
+}
+
+.fui-PopupSurface {
+  background-color: #fff !important;
+  border: 1px solid #ddd !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fui-Calendar {
+  background-color: #fff !important;
+  border-radius: 8px !important;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+}

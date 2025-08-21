@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import {
+  EmployeeDataProvider,
+} from "../../../context/EmployeeContext";
+import EmployeeComponent from "./components/EmployeeComponent";
+import useServices from "./hooks/useServices";
 
 const Employee = () => {
+  const data = useServices();
   return (
-    <div style={{width: "60%", margin:"auto"}}>Employee</div>
-  )
-}
+    <EmployeeDataProvider value={{ ...data }}>
+      <EmployeeComponent />
+    </EmployeeDataProvider>
+  );
+};
 
-export default Employee
+export default Employee;

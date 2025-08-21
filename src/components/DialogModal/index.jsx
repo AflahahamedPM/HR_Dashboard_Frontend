@@ -8,6 +8,8 @@ const dialogStyles = {
     borderRadius: "10px",
     padding: 0,
     margin: 0,
+    top:0,
+    left:0,
     boxShadow:
       "0px 6.400000095367432px 14.399999618530273px 0px rgba(0, 0, 0, 0.13), 0px 1.2000000476837158px 3.5999999046325684px 0px rgba(0, 0, 0, 0.10)",
   },

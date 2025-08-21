@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { AttendanceDataProvider } from "../../../context/AttendanceContext";
+import useServices from "./hooks/useServices";
+import AttendanceComponent from "./components/AttendanceComponent";
 
 const Attendance = () => {
+  const data = useServices();
   return (
-    <div style={{width: "60%", margin:"auto"}}>Attendance</div>
-  )
-}
+    <AttendanceDataProvider value={{ ...data }}>
+      <AttendanceComponent />
+    </AttendanceDataProvider>
+  );
+};
 
-export default Attendance
+export default Attendance;

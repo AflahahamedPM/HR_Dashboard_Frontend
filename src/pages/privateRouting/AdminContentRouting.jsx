@@ -1,4 +1,4 @@
-import { Spinner } from "@fluentui/react-components";
+import { Box, CircularProgress } from "@mui/material";
 import React, { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -9,7 +9,20 @@ const Leave = lazy(() => import("./Leave"));
 
 const AdminContentRouting = () => {
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense
+      fallback={
+        <Box
+          sx={{
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      }
+    >
       <Routes>
         <Route path="/" element={<Navigate to="candidate" replace />} />
         <Route path="candidate" element={<Candidate />} />

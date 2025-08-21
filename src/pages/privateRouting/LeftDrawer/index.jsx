@@ -84,13 +84,13 @@ const LeftDrawer = () => {
       <p className="title-text">HR Made Easy</p>
       <div>
         {menuSections?.map((section) => (
-          <>
+          <div key={section?.title}>
             <p className="menu-title">{section?.title}</p>
             <RenderMenuItems
               items={section?.items}
               selectedTab={selectedLeftDrawer}
             />
-          </>
+          </div>
         ))}
       </div>
     </div>
