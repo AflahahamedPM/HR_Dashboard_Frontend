@@ -35,22 +35,9 @@ const EmployeeComponent = () => {
           reset={() => setEditEmployeeModalOpen(false)}
           width={"600px"}
           parent={
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "2px",
-                backgroundColor: "var(--primary-color)",
-                marginTop: "-56px",
-                marginLeft: "-24px",
-                width: "596px",
-              }}
-            >
+            <div className="employee-modal">
               <div>
-                <p style={{ marginLeft: "10px", color: "white" }}>
-                  Edit Employee Details
-                </p>
+                <p className="employee-modal-text">Edit Employee Details</p>
               </div>
               <img
                 src={closeIcon}

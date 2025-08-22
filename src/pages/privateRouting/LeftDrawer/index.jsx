@@ -112,19 +112,10 @@ const LeftDrawer = () => {
           width={"600px"}
           parent={
             <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "2px",
-                backgroundColor: "var(--primary-color)",
-                marginTop: "-56px",
-                marginLeft: "-24px",
-                width: "596px",
-              }}
+              className="logout-modal-container"
             >
               <div>
-                <p style={{ marginLeft: "10px", color: "white" }}>Log Out</p>
+                <p className="logout-modal-text">Log Out</p>
               </div>
               <img
                 src={closeIcon}

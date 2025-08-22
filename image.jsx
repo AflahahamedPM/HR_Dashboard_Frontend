@@ -15,6 +15,7 @@ import logoutNormalIcon from "./src/assets/images/logoutNormalIcon.png";
 import logoutFilledIcon from "./src/assets/images/logoutFilledIcon.png";
 import profilePic from "./src/assets/images/profileImage.png";
 import closeIcon from "./src/assets/images/closeImage.png";
+import docsIcon from "./src/assets/images/docsIcon.png";
 
 export {
   loginLogo,
@@ -34,4 +35,5 @@ export {
   logoutFilledIcon,
   profilePic,
   closeIcon,
+  docsIcon
 };

@@ -1,0 +1,22 @@
+.left-drawer-container {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.admin-container {
+  display: flex;
+}
+
+.admin-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+
+.circular-progress{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

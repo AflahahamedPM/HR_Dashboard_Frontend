@@ -16,8 +16,6 @@ const CandidateForm = () => {
     createCandidate,
   } = useCandidateData();
 
-  console.log(candidateForm, "candidateForm");
-
   const handleInputChange = (value, fieldName) => {
     setCandidateForm((prev) => ({
       ...prev,
@@ -74,13 +72,7 @@ const CandidateForm = () => {
             }))
           }
         >
-          <div
-            style={{
-              padding: "6px",
-              border: "1px solid #E5E5E5",
-              backgroundColor: "#fff",
-            }}
-          >
+          <div className="postion-options">
             {positionOptions?.map((option) => (
               <Option value={option}>{option}</Option>
             ))}

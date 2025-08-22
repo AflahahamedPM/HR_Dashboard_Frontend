@@ -1,6 +1,5 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import "../style.css";
 import { useEmployeeData } from "../../../../context/EmployeeContext";
 import { Button, Dropdown, Option } from "@fluentui/react-components";
 import { DatePicker } from "@fluentui/react-datepicker-compat";
@@ -61,13 +60,7 @@ const EmplyeeForm = () => {
           }
           value={employeeForm?.department}
         >
-          <div
-            style={{
-              padding: "6px",
-              border: "1px solid #E5E5E5",
-              backgroundColor: "#fff",
-            }}
-          >
+          <div className="dropdown-options">
             {departmentOptions?.map((option) => (
               <Option value={option}>{option}</Option>
             ))}
@@ -86,13 +79,7 @@ const EmplyeeForm = () => {
           }
           value={employeeForm?.position}
         >
-          <div
-            style={{
-              padding: "6px",
-              border: "1px solid #E5E5E5",
-              backgroundColor: "#fff",
-            }}
-          >
+          <div className="dropdown-options">
             {positionOptions?.map((option) => (
               <Option value={option}>{option}</Option>
             ))}
@@ -119,12 +106,7 @@ const EmplyeeForm = () => {
       <div className="form-actions">
         <Button
           appearance="primary"
-          style={{
-            padding: "8px 30px",
-            borderRadius: "50px",
-            backgroundColor: "var(--primary-color)",
-            color: "white",
-          }}
+          className="save-btn"
           onClick={updateEmployee}
         >
           Save

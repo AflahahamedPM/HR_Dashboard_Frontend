@@ -191,7 +191,6 @@ const useServices = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response, "response");
 
       if (response?.data?.data?.responseCode === 109) {
         setCandidateForm((prev) => ({
@@ -199,6 +198,8 @@ const useServices = () => {
           resume: response?.data?.data?.fileName,
           resumeUrl: response?.data?.data?.url,
         }));
+      } else {
+        publishNotification("Error while uploading resume", "error");
       }
     } catch (error) {
       console.log(error);

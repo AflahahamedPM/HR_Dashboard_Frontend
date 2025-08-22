@@ -14,6 +14,7 @@ import {
 } from "@fluentui/react-components";
 import { MoreVertical20Filled } from "@fluentui/react-icons";
 import { formatDate } from "../../utils/formatDate";
+import { docsIcon } from "../../../image";
 
 const Index = ({
   columns,
@@ -22,6 +23,7 @@ const Index = ({
   statusOptions = [],
   updateStatus = "",
   isCandidatePage,
+  isLeavePage,
 }) => {
   return (
     <Table aria-label="Dynamic Fluent UI Table" className="custom-table">
@@ -78,7 +80,7 @@ const Index = ({
                     {col.key === "status" || col.key === "attendanceStatus" ? (
                       <select
                         value={
-                          isCandidatePage
+                          isCandidatePage || isLeavePage
                             ? rowWithSrNo?.status
                             : rowWithSrNo?.attendanceStatus
                         }
@@ -97,6 +99,12 @@ const Index = ({
                               : rowWithSrNo.status === "Rejected"
                               ? "#B70000"
                               : "#000000"
+                            : isLeavePage
+                            ? rowWithSrNo.status === "Pending"
+                              ? "#E8B000"
+                              : rowWithSrNo.status === "Approved"
+                              ? "#008413"
+                              : "#B70000"
                             : rowWithSrNo?.attendanceStatus === "Present"
                             ? "#008413"
                             : rowWithSrNo?.attendanceStatus === "Absent"
@@ -114,8 +122,23 @@ const Index = ({
                           </option>
                         ))}
                       </select>
-                    ) : col.key === "dateOfJoin" && rowWithSrNo[col.key] ? (
+                    ) : (col.key === "dateOfJoin" && rowWithSrNo[col.key]) ||
+                      (col.key === "appliedDate" && rowWithSrNo[col.key]) ? (
                       formatDate(rowWithSrNo[col.key])
+                    ) : col.key === "docsUrl" ? (
+                      rowWithSrNo[col.key] ? (
+                        <img
+                          src={docsIcon}
+                          width={30}
+                          height={30}
+                          onClick={() =>
+                            window.open(rowWithSrNo[col.key], "_blank")
+                          }
+                          style={{ cursor: "pointer" }}
+                        />
+                      ) : (
+                        "nil"
+                      )
                     ) : (
                       rowWithSrNo[col.key]
                     )}

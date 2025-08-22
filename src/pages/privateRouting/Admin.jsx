@@ -5,12 +5,12 @@ import AdminContentRouting from "./AdminContentRouting";
 
 const Admin = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "220px", flexShrink: 0 }}>
+    <div className="admin-container">
+      <div className="left-drawer-container">
         <LeftDrawer />
       </div>
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <div className="admin-content">
         <Topbar />
         <AdminContentRouting />
       </div>

@@ -11,16 +11,9 @@ const AdminContentRouting = () => {
   return (
     <Suspense
       fallback={
-        <Box
-          sx={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <div className="circular-progress">
           <CircularProgress />
-        </Box>
+        </div>
       }
     >
       <Routes>

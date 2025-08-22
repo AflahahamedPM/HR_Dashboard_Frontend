@@ -75,15 +75,77 @@
   display: flex;
   justify-content: center;
 }
-
-
-.postion-options{
-    padding: 6px;
-    border: 1px solid #E5E5E5;
-    background-color: #fff;
+.react-calendar__tile.leave-date.react-calendar__tile--active {
+  background: #fff !important;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6b21a8;
+  border: 1px solid var(--primary-color);
 }
 
-.candidat-modal {
+.leave-calender-container {
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(18, 18, 18, 0.2);
+  border-radius: 6px;
+}
+
+.calender-text {
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.calender-component,
+.applied-leave-container {
+  padding: 6px;
+}
+
+.applied-leave-container .main-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.applied-leave-container .content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.applied-leave-container .applied-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  line-height: 0.1px;
+  margin-bottom: 10px;
+}
+
+.applied-leave-container .department-text {
+  color: #a4a4a4;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.table-container {
+  display: flex;
+  gap: 8px;
+}
+
+.save-btn {
+  padding: 8px 30px;
+  border-radius: 50px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.leave-modal {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,7 +156,7 @@
   width: 596px;
 }
 
-.candidat-modal-text{
+.leave-modal-text{
     margin-left: 10px;
     color: #fff;
 }

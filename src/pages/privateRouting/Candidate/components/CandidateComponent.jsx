@@ -46,22 +46,9 @@ const CandidateComponent = () => {
           reset={() => setAddCandidateModalOpen(false)}
           width={"600px"}
           parent={
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "2px",
-                backgroundColor: "var(--primary-color)",
-                marginTop: "-56px",
-                marginLeft: "-24px",
-                width: "596px",
-              }}
-            >
+            <div className="candidat-modal">
               <div>
-                <p style={{ marginLeft: "10px", color: "white" }}>
-                  Add Candidate
-                </p>
+                <p className="candidat-modal-text">Add Candidate</p>
               </div>
               <img
                 src={closeIcon}

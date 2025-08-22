@@ -11,6 +11,8 @@ const Toolbar = ({
   onSearch,
   isCandidatePage,
   handleAddCandidate,
+  isLeavePage,
+  handleAddLeave,
 }) => {
   return (
     <div
@@ -90,7 +92,7 @@ const Toolbar = ({
             height: "22px",
           }}
         />
-        {isCandidatePage && (
+        {(isCandidatePage || isLeavePage) && (
           <Button
             style={{
               backgroundColor: "var(--primary-color)",
@@ -102,9 +104,9 @@ const Toolbar = ({
               color: "white",
               borderRadius: "40px",
             }}
-            onClick={handleAddCandidate}
+            onClick={isLeavePage ? handleAddLeave : handleAddCandidate}
           >
-            Add Candidate
+            {isLeavePage ? "Add Leave" : "Add Candidate"}
           </Button>
         )}
       </div>

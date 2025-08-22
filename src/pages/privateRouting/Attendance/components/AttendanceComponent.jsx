@@ -10,7 +10,6 @@ const AttendanceComponent = () => {
     setFilterForm,
     setKeyword,
     headers,
-    data,
     updateStatus,
     employeeList
   } = useAttendanceData();

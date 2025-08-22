@@ -4,6 +4,7 @@ import {
 } from "../../../context/EmployeeContext";
 import EmployeeComponent from "./components/EmployeeComponent";
 import useServices from "./hooks/useServices";
+import "./style.css"
 
 const Employee = () => {
   const data = useServices();

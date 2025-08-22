@@ -9,7 +9,7 @@ class ConfigAPIURL {
   static userLoggin = "/admin/account/login";
 
   // upload resume
-  static upload = "/admin/resume";
+  static upload = "/admin/upload";
 
   // candidate apis
   static createCandidate = "/admin/candidate/create";
@@ -22,7 +22,13 @@ class ConfigAPIURL {
   static updateEmployee = "/admin/employee/update";
 
   // attendance api
-  static updateAttendanceStatus = "/admin/attendance/update"
+  static updateAttendanceStatus = "/admin/attendance/update";
+
+  // leave api
+  static employeeDropdown = "/admin/employee/dropdown";
+  static applyLeave = "/admin/leave/apply";
+  static listLeaves = "/admin/leave/list";
+  static updateLeaveStatus = "/admin/leave/update"
 }
 
 export default ConfigAPIURL;
