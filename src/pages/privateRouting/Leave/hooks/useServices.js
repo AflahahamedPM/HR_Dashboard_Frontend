@@ -39,6 +39,7 @@ const useServices = () => {
       key: "appliedDate",
       label: "Date",
       width: "120px",
+      
     },
     {
       key: "reason",
