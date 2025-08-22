@@ -1,15 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAdminData } from "../../../../context/PrivateContentContext";
 
 const RenderMenuItems = ({ items, selectedTab }) => {
   const navigate = useNavigate();
+  const { setOpenLogoutModal } = useAdminData();
   return (
     <>
       {items?.map((menu) => (
         <div
           key={menu.label}
           className="drawer-content"
-          onClick={() => navigate(`/admin${menu?.path}`)}
+          onClick={
+            menu?.label === "Logout"
+              ? () => setOpenLogoutModal(true)
+              : () => navigate(`/admin${menu?.path}`)
+          }
         >
           <img
             src={

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useAlert from "../../../../hooks/useAlert";
+import axiosInstance from "../../../../utils/axiosInstance";
+import ConfigAPIURL from "../../../../config/ConfigAPIURL";
+import { CheckValidation } from "../../../../utils/checkValidation";
+import { useNavigate } from "react-router-dom";
 
 const filterFormFields = {
   position: "",
@@ -18,23 +23,25 @@ const useServices = () => {
   const [keyword, setKeyword] = useState("");
   const [editEmployeeModalOpen, setEditEmployeeModalOpen] = useState(false);
   const [employeeForm, setEmployeeForm] = useState(employeeFormFields);
-
+  const { publishNotification } = useAlert();
+  const [employeeList, setEmployeeList] = useState([]);
+  const navigate = useNavigate();
   const headers = [
     { key: "srNo", label: "Sr No", width: "80px", height: "50px" },
     {
-      key: "employeeName",
+      key: "fullName",
       label: "Employee Name",
       width: "150px",
       height: "50px",
     },
     {
-      key: "emailAddress",
+      key: "email",
       label: "Email Address",
       width: "150px",
       height: "50px",
     },
     {
-      key: "phoneNumber",
+      key: "phoneNo",
       label: "Phone Number",
       width: "150px",
       height: "50px",
@@ -62,47 +69,122 @@ const useServices = () => {
   const actions = [
     {
       label: "Edit",
-      onClick: () => setEditEmployeeModalOpen(true),
+      onClick: (row) => {
+        fetchEmployeeDetails(row?._id);
+        setEditEmployeeModalOpen(true);
+      },
     },
     {
       label: "Delete",
-      onClick: (row) => console.log("Deleting", row.srNo),
+      onClick: (row) => deleteEmployee(row?._id),
     },
   ];
 
-  const [data, setData] = useState([
-    {
-      srNo: "01",
-      employeeName: "Aflah",
-      emailAddress: "aflah@gmail.com",
-      phoneNumber: "8998977878",
-      position: "Senior",
-      department: "Developer",
-      dateOfJoin: "12/3/2024",
-    },
-    {
-      srNo: "02",
-      employeeName: "John Doe",
-      emailAddress: "john@gmail.com",
-      phoneNumber: "8123456789",
-      position: "Junior",
-      department: "HR",
-      dateOfJoin: "14/2/25",
-    },
-  ]);
+  useEffect(() => {
+    listAllEmployees();
+  }, [filterForm, keyword]);
 
-  //   const updateStatus = (srNo, newStatus) => {
-  //     setData((prev) =>
-  //       prev.map((row) =>
-  //         row.srNo === srNo ? { ...row, status: newStatus } : row
-  //       )
-  //     );
-  //   };
+  const fetchEmployeeDetails = async (id) => {
+    try {
+      const response = await axiosInstance.post(ConfigAPIURL.employeeDetails, {
+        recordId: id,
+      });
+
+      if (response?.data?.data?.responseCode === 109) {
+        const employeeDetail = response?.data?.data?.result;
+        setEmployeeForm((prev) => ({
+          ...prev,
+          fullName: employeeDetail?.fullName,
+          email: employeeDetail?.email,
+          phoneNo: employeeDetail?.phoneNo,
+          position: employeeDetail?.position,
+          department: employeeDetail?.department,
+          dateOfJoin: employeeDetail?.dateOfJoin,
+          recordId: employeeDetail?._id,
+        }));
+      }
+    } catch (error) {
+      console.log(error, "error");
+      publishNotification("Error while fetching employee details", "error");
+    }
+  };
+
+  const updateEmployee = async () => {
+    const employeeFormCopy = { ...employeeForm };
+    delete employeeFormCopy?.recordId;
+
+    let missingFields = CheckValidation(employeeFormCopy);
+
+    if (missingFields.length > 0) {
+      publishNotification("Please fill all the required fields", "error");
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (
+      !employeeFormCopy?.email ||
+      employeeFormCopy.email.length === 0 ||
+      !emailPattern.test(employeeFormCopy.email)
+    ) {
+      publishNotification("Please enter a valid email", "error");
+      return;
+    }
+
+    if (employeeFormCopy?.phoneNo.length < 10) {
+      publishNotification("Mobile no should be 10 digits", "error");
+      return;
+    }
+
+    const response = await axiosInstance.post(
+      ConfigAPIURL.updateEmployee,
+      employeeForm
+    );
+
+    if (response?.data?.data?.responseCode === 109) {
+      publishNotification("Successfully updated employee details", "success");
+      setEditEmployeeModalOpen(false);
+      setEmployeeForm(employeeFormFields);
+      listAllEmployees();
+    }
+  };
+
+  const deleteEmployee = async (id) => {
+    try {
+      const response = await axiosInstance.post(ConfigAPIURL.deleteUser, {
+        recordId: id,
+      });
+      if (response?.data?.data?.responseCode === 109) {
+        publishNotification("Successfully deleted Employee", "success");
+        listAllEmployees();
+      }
+    } catch (error) {
+      console.log(error, "error");
+      publishNotification("Error while deleting employee");
+    }
+  };
+
+  const listAllEmployees = async () => {
+    try {
+      const response = await axiosInstance.post(ConfigAPIURL.listEmployee, {
+        ...filterForm,
+        keyword,
+      });
+      if (response?.data?.data?.responseCode === 109) {
+        setEmployeeList(response?.data?.data?.result);
+      } else if (
+        response?.data?.data?.message === "Not authorized, token expired"
+      ) {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error, "error");
+      publishNotification("Error while listing all employees", "error");
+    }
+  };
 
   return {
     headers,
     actions,
-    data,
     positionOptions,
     filterForm,
     setFilterForm,
@@ -113,6 +195,8 @@ const useServices = () => {
     employeeForm,
     setEmployeeForm,
     departmentOptions,
+    employeeList,
+    updateEmployee,
   };
 };
 

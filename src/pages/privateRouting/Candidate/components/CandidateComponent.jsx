@@ -4,13 +4,12 @@ import { useCandidateData } from "../../../../context/CandidateContext";
 import Toolbar from "../../../../components/Toolbar";
 import DialogModal from "../../../../components/DialogModal";
 import { closeIcon } from "../../../../../image";
-import CandidateInputFields from "./CandidateForm";
 import CandidateForm from "./CandidateForm";
 
 const CandidateComponent = () => {
   const {
     headers,
-    data,
+    candidateList,
     actions,
     statusOptions,
     updateStatus,
@@ -20,7 +19,6 @@ const CandidateComponent = () => {
     setKeyword,
     setAddCandidateModalOpen,
     addCandidateModalOpen,
-    closeCandidateModalRef,
   } = useCandidateData();
   return (
     <>
@@ -35,10 +33,11 @@ const CandidateComponent = () => {
       />
       <DataTable
         columns={headers}
-        data={data}
+        data={candidateList}
         actions={actions}
         statusOptions={statusOptions}
         updateStatus={updateStatus}
+        isCandidatePage={true}
       />
 
       {addCandidateModalOpen && (

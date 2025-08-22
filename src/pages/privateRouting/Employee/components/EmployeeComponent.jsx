@@ -9,7 +9,7 @@ import EmplyeeForm from "./EmplyeeForm";
 const EmployeeComponent = () => {
   const {
     headers,
-    data,
+    employeeList,
     actions,
     positionOptions,
     filterForm,
@@ -27,7 +27,7 @@ const EmployeeComponent = () => {
         setFilter={setFilterForm}
         onSearch={(searchValue) => setKeyword(searchValue)}
       />
-      <DataTable columns={headers} data={data} actions={actions} />
+      <DataTable columns={headers} data={employeeList} actions={actions} />
 
       {editEmployeeModalOpen && (
         <DialogModal

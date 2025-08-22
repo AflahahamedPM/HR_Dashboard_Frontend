@@ -8,8 +8,15 @@ import TextField from "@mui/material/TextField";
 
 const CandidateForm = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const { candidateForm, setCandidateForm, positionOptions } =
-    useCandidateData();
+  const {
+    candidateForm,
+    setCandidateForm,
+    positionOptions,
+    uploadFile,
+    createCandidate,
+  } = useCandidateData();
+
+  console.log(candidateForm, "candidateForm");
 
   const handleInputChange = (value, fieldName) => {
     setCandidateForm((prev) => ({
@@ -17,6 +24,18 @@ const CandidateForm = () => {
       [fieldName]: value,
     }));
   };
+
+  const handleUpload = (e) => {
+    if (e.target.files[0]) {
+      [...e.target.files].map(async (data) => {
+        let formData = new FormData();
+        formData.append("resume", data);
+
+        uploadFile(formData);
+      });
+    }
+  };
+
   return (
     <div className="candidate-form">
       <div className="form-grid">
@@ -46,6 +65,7 @@ const CandidateForm = () => {
         <Dropdown
           appearance="outline"
           placeholder="Position*"
+          aria-label="Position*"
           className="input-field"
           onOptionSelect={(e, data) =>
             setCandidateForm((prev) => ({
@@ -76,9 +96,19 @@ const CandidateForm = () => {
         />
 
         <div className="resume-upload">
-          <input id="resume" type="file" className="resume-input-hidden" />
+          <input
+            id="resume"
+            type="file"
+            accept=".pdf"
+            onChange={(e) => handleUpload(e)}
+            className="resume-input-hidden"
+          />
           <label htmlFor="resume" className="resume-label">
-            <span>Upload Resume*</span>
+            {candidateForm?.resume ? (
+              candidateForm?.resume
+            ) : (
+              <span>Upload Resume*</span>
+            )}
             <ArrowUploadFilled className="upload-icon" />
           </label>
         </div>
@@ -105,6 +135,7 @@ const CandidateForm = () => {
             backgroundColor: isChecked ? "var(--primary-color)" : "#E5E5E5",
             color: "white",
           }}
+          onClick={createCandidate}
         >
           Save
         </Button>

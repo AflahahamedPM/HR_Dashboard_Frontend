@@ -38,3 +38,18 @@
     font-size: 14px;
     font-weight: 500;
 }
+
+.logout-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.logout-btn{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}

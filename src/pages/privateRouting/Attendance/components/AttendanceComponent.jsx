@@ -11,7 +11,8 @@ const AttendanceComponent = () => {
     setKeyword,
     headers,
     data,
-    updateStatus
+    updateStatus,
+    employeeList
   } = useAttendanceData();
   return (
     <>
@@ -23,7 +24,7 @@ const AttendanceComponent = () => {
       />
       <DataTable
         columns={headers}
-        data={data}
+        data={employeeList}
         statusOptions={statusOptions}
         updateStatus={updateStatus}
       />

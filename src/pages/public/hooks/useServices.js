@@ -4,6 +4,7 @@ import ConfigAPIURL from "../../../config/ConfigAPIURL";
 import axiosInstance from "../../../utils/axiosInstance";
 import { CheckValidation } from "../../../utils/checkValidation";
 import useAlert from "../../../hooks/useAlert";
+import { useNavigate } from "react-router-dom";
 
 let loginFormFields = {
   email: "",
@@ -23,6 +24,7 @@ const useServices = () => {
   const [loginForm, setLoginForm] = useState(loginFormFields);
   const [registerForm, setRegisterForm] = useState(registerFormFields);
   const { publishNotification } = useAlert();
+  const navigate = useNavigate();
 
   const registerUser = async () => {
     try {
@@ -44,6 +46,12 @@ const useServices = () => {
         ConfigAPIURL.registerNewUser,
         registerForm
       );
+      if (response?.data?.data?.responseCode === 109) {
+        publishNotification("Successfully registered", "success");
+        navigate("/login");
+      } else if (response?.data?.data?.responseCode === 114) {
+        publishNotification("Email already exists", "error");
+      }
     } catch (error) {
       console.log(error, "error");
       publishNotification("Error while registering user", "error");
@@ -59,7 +67,20 @@ const useServices = () => {
         return;
       }
 
-      const response = await axiosInstance.post(ConfigAPIURL.userLoggin)
+      const response = await axiosInstance.post(
+        ConfigAPIURL.userLoggin,
+        loginForm
+      );
+
+      if (response?.data?.data?.responseCode === 109) {
+        const authToken = response?.data?.data?.token;
+        localStorage.setItem("authToken", authToken);
+        navigate("/admin");
+      } else if (response?.data?.data?.responseCode === 123) {
+        publishNotification("Email doesn't exists", "error");
+      } else if (response?.data?.data?.responseCode === 104) {
+        publishNotification("Wrong Password", "error");
+      }
     } catch (error) {
       console.log(error, "error");
       publishNotification("Error while logging in", "error");

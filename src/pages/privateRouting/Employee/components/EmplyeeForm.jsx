@@ -6,16 +6,19 @@ import { Button, Dropdown, Option } from "@fluentui/react-components";
 import { DatePicker } from "@fluentui/react-datepicker-compat";
 
 const EmplyeeForm = () => {
-  const { employeeForm, setEmployeeForm, positionOptions, departmentOptions } =
-    useEmployeeData();
+  const {
+    employeeForm,
+    setEmployeeForm,
+    positionOptions,
+    departmentOptions,
+    updateEmployee,
+  } = useEmployeeData();
   const handleInputChange = (value, fieldName) => {
     setEmployeeForm((prev) => ({
       ...prev,
       [fieldName]: value,
     }));
   };
-
-  console.log(employeeForm, "employeeForm");
 
   return (
     <div className="employee-form">
@@ -122,6 +125,7 @@ const EmplyeeForm = () => {
             backgroundColor: "var(--primary-color)",
             color: "white",
           }}
+          onClick={updateEmployee}
         >
           Save
         </Button>
