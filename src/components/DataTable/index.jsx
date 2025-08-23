@@ -15,7 +15,6 @@ import {
 import { MoreVertical20Filled } from "@fluentui/react-icons";
 import { formatDate } from "../../utils/formatDate";
 import { docsIcon } from "../../../image";
-import "./style.css"
 
 const Index = ({
   columns,

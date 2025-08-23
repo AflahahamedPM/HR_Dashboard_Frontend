@@ -1,5 +1,4 @@
 #login-container {
-  /* min-height: 80vh; */
   width: 100%;
 }
 
@@ -8,6 +7,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--primary-color);
   font-weight: 600;
+  justify-content: center;
+  display: flex;
 }
 
 .login-content {
@@ -66,15 +67,81 @@
   color: #121212;
 }
 
-.btn-container .login-btn{
-    padding: 8px 40px;
-    border-radius: 50px;
-    color: #FFFF;
-    outline: none;
-    border: none;
+.btn-container .login-btn {
+  padding: 8px 40px;
+  border-radius: 50px;
+  color: #FFFF;
+  outline: none;
+  border: none;
 }
 
-.redirect-link{
-    font-size: 14px;
-    font-weight: 400;
+.redirect-link {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .login-content {
+    width: 95%;
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  .login-field-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-field-container .login-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .welcome-text {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .field-label {
+    font-size: 13px;
+  }
+
+  .text-input {
+    padding: 14px;
+    font-size: 16px; 
+  }
+
+  .btn-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .btn-container .login-btn {
+    padding: 12px 50px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+  }
+
+  .redirect-link {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+  }
+
+  .password-field {
+    margin-bottom: 10px;
+  }
+
+  .toggle-password {
+    width: 18px;
+    height: 18px;
+  }
 }

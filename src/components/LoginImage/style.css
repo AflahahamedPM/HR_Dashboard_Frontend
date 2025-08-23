@@ -6,14 +6,45 @@
   border-bottom-left-radius: 20px;
 }
 
+.left-login-side img {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  object-fit: contain;
+}
+
 .left-login-side .main-text {
   color: #ffff;
   font-size: 20px;
   font-weight: 600;
 }
 
-.left-login-side .sub-text{
-    color: #ffff;
+.left-login-side .sub-text {
+  color: #ffff;
   font-size: 16px;
-  font-weight: 400;   
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .left-login-side {
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+  }
+  
+  .left-login-side img {
+    max-width: 300px;
+    margin-bottom: 16px;
+  }
+  
+  .left-login-side .main-text {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .left-login-side .sub-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
 }
