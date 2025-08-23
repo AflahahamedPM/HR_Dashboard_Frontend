@@ -13,10 +13,9 @@
   flex-direction: column;
 }
 
-
-.circular-progress{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.circular-progress {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
